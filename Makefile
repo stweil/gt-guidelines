@@ -1,9 +1,12 @@
 export
 
-DITA_OT_VERSION  = 3.0.4
-DITA_OT_DIR      = dita-ot-$(DITA_OT_VERSION)
-DITA_OT_ZIP      = $(DITA_OT_DIR).zip
-DITA_OT_URL = https://github.com/dita-ot/dita-ot/releases/download/$(DITA_OT_VERSION)/$(DITA_OT_ZIP)
+DITA_OT_VERSION = 3.0.4
+DITA_OT_DIR     = dita-ot-$(DITA_OT_VERSION)
+DITA_OT_ZIP     = $(DITA_OT_DIR).zip
+DITA_OT_URL     = https://github.com/dita-ot/dita-ot/releases/download/$(DITA_OT_VERSION)/$(DITA_OT_ZIP)
+
+# Dita output format. Default: "$(DITA_FORMAT)"
+DITA_FORMAT     = html5
 
 PATH := $(PWD)/$(DITA_OT_DIR)/bin:$(PATH)
 DITA = dita
@@ -31,9 +34,10 @@ help:
 	@echo ""
 	@echo "  Variables"
 	@echo ""
+	@echo "    DITA_FORMAT     Dita output format. Default: "$(DITA_FORMAT)""
 	@echo "    ANT_OPTS        Options passed to ant in dita script. Default: '$(ANT_OPTS)'"
 	@echo "    GT_DOC_DITAMAP  Folder containing GT guidelines. Default: '$(GT_DOC_DITAMAP)'"
-	@echo "    GT_DOC_OUT      Folder to put OUTPUT in. Default: '$(GT_DOC_OUT)'"
+	@echo "    PAGE_DOC_OUT    Folder to put OUTPUT in. Default: '$(GT_DOC_OUT)'"
 
 # END-EVAL
 
@@ -46,4 +50,4 @@ $(DITA_OT_DIR):
 
 # Build docs from $(IN)/DOC.md to $(OUT)
 build:
-	$(DITA) -o "$(GT_DOC_OUT)" -i "$(GT_DOC_DITAMAP)" -f html5
+	$(DITA) -o "$(GT_DOC_OUT)" -i "$(GT_DOC_DITAMAP)" -f $(DITA_FORMAT)
