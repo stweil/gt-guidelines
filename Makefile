@@ -17,7 +17,8 @@ ANT_OPTS = "-Dhttp.proxySet=true" "-Dhttp.proxyHost=http-proxy.sbb.spk-berlin.de
 GT_DOC_DITAMAP = documentation/ocrd.ditamap
 
 # Folder to put OUTPUT in. Default: '$(GT_DOC_OUT)'
-GT_DOC_OUT = build/gt-guidelines
+GT_DOC_OUT = docs/gt
+PAGE_DOC_OUT = docs/page
 
 # BEGIN-EVAL makefile-parser --make-help Makefile
 
